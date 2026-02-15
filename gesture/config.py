@@ -6,7 +6,7 @@ import math
 import pyautogui
 
 # --- SYSTEM ---
-APP_NAME = "J.A.R.V.I.S Gesture Interface"
+APP_NAME = "GCS (Gesture Control System)"
 WINDOW_WIDTH, WINDOW_HEIGHT = pyautogui.size()
 TARGET_FPS = 60
 
@@ -25,7 +25,7 @@ CONFIDENCE_GROWTH = 0.15           # Slower growth (require sustained pinch)
 # Pinch Thresholds (mm approx, relative to hand size)
 PINCH_THRESHOLD_NORM = 0.07        # Increased to 0.07 (easier to trigger click)
 
-# --- V6 RELATIVE PHYSICS (AIR MOUSE) ---
+# ---  RELATIVE PHYSICS (AIR MOUSE) ---
 DEAD_ZONE = 0.002        # Anti-tremor: Movement below this is ignored
 BASE_SENSITIVITY = 3.0   # Base speed
 ACCELERATION_FACTOR = 20.0 # Gain for fast movements

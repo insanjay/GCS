@@ -1,12 +1,12 @@
 
 import cv2
 import time
-from gesture_v3 import config
-from gesture_v3.perception.tracker import HandTracker
+from gesture import config
+from gesture.perception.tracker import HandTracker
 
 class SystemController:
     """
-    Core Application Loop (V3)
+    Core Application Loop
     Orchestrates: Camera -> Tracker -> Smoother -> Intent -> Physics -> UI -> Display
     """
     def __init__(self):
@@ -26,10 +26,10 @@ class SystemController:
         print(f"[{config.APP_NAME}] System Initialized. Press 'Q' to Quit.")
         
         # Initialize Subsystems
-        from gesture_v3.perception.smoothing import OneEuroFilter
-        from gesture_v3.intent.classifier import GestureClassifier
-        from gesture_v3.control.mouse_physics import PhysicsCursor
-        from gesture_v3.ui.hud import CinematicHUD
+        from gesture.perception.smoothing import OneEuroFilter
+        from gesture.intent.classifier import GestureClassifier
+        from gesture.control.mouse_physics import PhysicsCursor
+        from gesture.ui.hud import CinematicHUD
 
         smoother = OneEuroFilter(time.time(), [0.5, 0.5], min_cutoff=config.ONE_EURO_MIN_CUTOFF, beta=config.ONE_EURO_BETA)
         classifier = GestureClassifier()
@@ -182,7 +182,7 @@ class SystemController:
 
             # 7. System Info
             fps = 1/dt if dt > 0 else 0
-            cv2.putText(img, f"J.A.R.V.I.S  |  FPS: {int(fps)}", (20, 30), cv2.FONT_HERSHEY_PLAIN, 1, (200, 255, 200), 1)
+            cv2.putText(img, f"GCS |  FPS: {int(fps)}", (20, 30), cv2.FONT_HERSHEY_PLAIN, 1, (200, 255, 200), 1)
 
             # 8. Display
             cv2.imshow(config.APP_NAME, img)

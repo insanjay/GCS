@@ -4,7 +4,7 @@ import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import config
-import numpy as np
+# import numpy as np
 
 class HandTracker:
     def __init__(self, mode=False, max_hands=config.MAX_NUM_HANDS, 

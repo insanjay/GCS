@@ -1,7 +1,7 @@
 
 import time
 import math
-from gesture_v3 import config
+from gesture import config
 
 class GestureClassifier:
     """

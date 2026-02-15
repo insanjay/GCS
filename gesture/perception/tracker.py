@@ -1,16 +1,16 @@
 
 import mediapipe as mp
-import numpy as np
-import time
+# import numpy as np
+# import time
 import os
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
-# Relative import fix if needed, but config is in parent
-try:
-    from .. import config
-except ImportError:
-    import config
+# # Relative import fix if needed, but config is in parent
+# try:
+#      from .. import config
+# except ImportError:
+#      import config
 
 class HandTracker:
     """

@@ -2,13 +2,13 @@
 import math
 import pyautogui
 import numpy as np
-from gesture_v3 import config
+from gesture import config
 
 pyautogui.FAILSAFE = False 
 
 class PhysicsCursor:
     """
-    Control Layer V6 (Air Mouse).
+    Control Layer (Air Mouse).
     Input: Relative Delta (dx, dy)
     Output: Relative Mouse Movement
     """

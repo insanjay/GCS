@@ -2,12 +2,12 @@
 import cv2
 import numpy as np
 from collections import deque
-from gesture_v3 import config
+from gesture import config
 
 class CinematicHUD:
     """
     UI Layer.
-    Renders "Iron Man" style overlay.
+    Renders "Futuristic" style overlay.
     """
     def __init__(self):
         # Trail history
