@@ -2,7 +2,7 @@
 
 A software-only solution to control your PC mouse using hand gestures via a webcam. Built with Python, OpenCV, and MediaPipe.
 
-## Features (Version 2)
+## Features
 -   **Multi-Mode Interaction**:
     -   **MOVE MODE**: Standard cursor control.
     -   **SCROLL MODE**: Intuitive hand-movement scrolling.
@@ -82,7 +82,9 @@ Tweak `config.py`:
 -   `GESTURE_COOLDOWN`: Time between clicks.
 -   `SMOOTHING_FACTOR`: Cursor stability.
 
-## Version 3 Roadmap (Future)
+## In next update Optimization is the key focus.
+
+## Version 2 Roadmap (Future)
 -   **Voice Control**: "Computer, open browser".
 -   **Keyboard Input**: Air-typing interface.
 -   **Custom Gestures**: ML Training for user-defined signaling.
