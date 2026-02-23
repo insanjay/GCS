@@ -1,8 +1,11 @@
-# Gesture Control System (GCS)
-
 <p align="center">
   <img src="docs/logo.png" alt="GCS Logo" width="200">
 </p>
+
+<p align="center">
+  <strong><a href="https://github.com/insanjay">Sanjay Kumar</a> - GCS.</strong>
+</p>
+
 
 <p align="center">
   <strong>Touch-free computer control using hand gestures and computer vision.</strong>
@@ -231,15 +234,3 @@ This project is based on gesture recognition concepts using:
 * OpenCV
 
 and was further structured, improved, and maintained as an open-source project.
-
----
-
-## Author
-
-Sanjay Kumar
-
-GitHub:
-
-[https://github.com/insanjay](https://github.com/insanjay)
-
----
