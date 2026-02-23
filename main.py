@@ -1,7 +1,7 @@
-
 """
 Entry point of the application
 """
+
 import sys
 import os
 

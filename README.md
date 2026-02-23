@@ -1,94 +1,245 @@
-# Hand Gesture Control System V1
+# Gesture Control System (GCS)
 
-A software-only solution to control your PC mouse using hand gestures via a webcam. Built with Python, OpenCV, and MediaPipe.
+<p align="center">
+  <img src="docs/logo.png" alt="GCS Logo" width="200">
+</p>
 
-## Features
--   **Multi-Mode Interaction**:
-    -   **MOVE MODE**: Standard cursor control.
-    -   **SCROLL MODE**: Intuitive hand-movement scrolling.
-    -   **PAUSED MODE**: Safety state.
--   **Expanded Gestures**:
-    -   **Right Click**: Thumb + Middle Pinch.
-    -   **Left Click**: Thumb + Index Pinch.
--   **Advanced Safety**:
-    -   **Global Kill Switch ('Q')**.
-    -   **Auto-Pause**: Activates on hand loss or low FPS.
-    -   **Cooldowns**: Prevents accidental double-clicks.
--   **Visual Dashboard**:
-    -   Real-time Mode, FPS, and Gesture display.
+<p align="center">
+  <strong>Touch-free computer control using hand gestures and computer vision.</strong>
+</p>
 
-## Prerequisites
--   Python 3.8+
--   Webcam
--   MediaPipe Model (`hand_landmarker.task`)
+<p align="center">
 
-## Setup Instructions
+  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg">
+  <img src="https://img.shields.io/github/repo-size/insanjay/GCS">
+  <img src="https://img.shields.io/badge/python-3.8%2B-blue">
+  <img src="https://img.shields.io/badge/license-MIT-green">
 
-1.  **Clone/Download** this repository.
-2.  **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3.  **Download Model**:
-    The system requires the `hand_landmarker.task` model file. [Download Link](https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task) or use:
-    ```powershell
-    Invoke-WebRequest -Uri https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task -OutFile hand_landmarker.task
-    ```
-
-4.  **Run the System**:
-    ```bash
-    python main.py
-    ```
-
-## ✋ Gesture Guide (Detailed Patterns)
-
-### 1. **MOVE CURSOR**
-*   **Pattern**: Raise **Index Finger** ONLY. Keep other fingers curled.
-*   **Action**: The mouse cursor follows your index fingertip.
-*   **Tips**: Keep your hand steady. Move within your camera's field of view.
-
-### 2. **LEFT CLICK**
-*   **Pattern**: Pinch your **Thumb** and **Index Finger** together.
-*   **Action**: Triggers a Left Click.
-*   **Requirement**:
-    *   Fingers must touch (distance < 40px).
-    *   Hold for **0.25 seconds** (prevents accidental clicks).
-
-### 3. **RIGHT CLICK**
-*   **Pattern**: Pinch your **Thumb** and **Middle Finger** together.
-*   **Action**: Triggers a Right Click (Context Menu).
-*   **Requirement**: Hold for **0.25 seconds**.
-
-### 4. **SCROLL MODE**
-*   **Pattern**: Raise **Index** + **Middle Fingers** (Peace Sign / Victory Sign).
-*   **Action**: Enters SCROLL MODE.
-    *   Move Hand **UP** -> Scroll Page UP.
-    *   Move Hand **DOWN** -> Scroll Page DOWN.
-*   **Exit**: Lower your middle finger to return to cursor control.
-
-### 5. **PAUSE / SAFETY**
-*   **Pattern**: Make a **Closed Fist**.
-*   **Action**: Pauses all system control immediately.
-*   **Visual**: Screen border turns RED, Text says "PAUSED".
-
-### 6. **QUIT**
-*   **Pattern**: Press **'Q'** on your keyboard.
-*   **Action**: Safery shutdown of the application.
-
-## Configuration
-Tweak `config.py`:
--   `SCROLL_SPEED`: Adjust scroll sensitivity.
--   `GESTURE_COOLDOWN`: Time between clicks.
--   `SMOOTHING_FACTOR`: Cursor stability.
-
-## In next update Optimization is the key focus.
-
-## Version 2 Roadmap (Future)
--   **Voice Control**: "Computer, open browser".
--   **Keyboard Input**: Air-typing interface.
--   **Custom Gestures**: ML Training for user-defined signaling.
-
+</p>
 
 ---
-*Created for Portfolio Demonstration*
+
+## About
+
+Gesture Control System (GCS) is a Python-based human–computer interaction system that enables cursor control and system input using hand gestures captured through a standard webcam.
+
+It uses computer vision and MediaPipe hand tracking to interpret hand movements and translate them into operating system mouse actions.
+
+This project is designed as:
+
+* a learning resource
+* an experimentation platform
+* a foundation for gesture-based interfaces
+
+---
+
+## Features
+
+* Cursor movement using index finger
+* Left and right click gestures
+* Scroll mode using hand gestures
+* Pause / safety mode
+* Real-time visual feedback (HUD)
+* Modular and extensible architecture
+
+---
+
+## Why This Project Exists
+
+Traditional computer interaction relies on physical devices.
+
+This project explores natural interaction using gestures to:
+
+* reduce dependency on hardware input devices
+* experiment with computer vision interfaces
+* provide a platform for further development and research
+
+---
+
+## Requirements
+
+* Python 3.8 or newer
+* Webcam
+* Operating System: Windows, Linux, or macOS
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/insanjay/GCS.git
+cd GCS
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Download the MediaPipe hand landmarker model:
+
+[Download Link](https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task)
+
+Place the file in the project root:
+
+```id="model"
+hand_landmarker.task
+```
+
+---
+
+## Quick Start
+
+Run the application:
+
+```bash
+python main.py
+```
+
+Show your hand to the webcam and perform gestures.
+
+Press `Q` to exit.
+
+---
+
+## Architecture Overview
+
+The system follows a modular pipeline:
+
+```id="pipeline"
+SystemController
+   │
+   ├── Tracker        (hand detection)
+   ├── Classifier     (gesture recognition)
+   ├── Mouse Control  (system input execution)
+   └── HUD            (visual feedback)
+```
+
+---
+
+## Project Structure
+
+```id="structure"
+GCS/
+
+main.py
+
+gesture/
+   core/
+      system.py
+
+   perception/
+      tracker.py
+      smoothing.py
+
+   intent/
+      classifier.py
+
+   control/
+      mouse_physics.py
+
+   ui/
+      hud.py
+
+   config.py
+
+config.py
+gesture_recognition.py
+requirements.txt
+hand_landmarker.task
+mouse_control.py
+hand_tracking.py
+.gitignore
+README.md
+```
+
+---
+
+## Configuration
+
+System behavior can be adjusted in:
+
+```id="config"
+config.py
+```
+
+Examples:
+
+<!-- * cursor sensitivity -->
+* smoothing
+* scroll speed
+* gesture cooldown
+
+---
+
+## Roadmap
+
+Planned improvements:
+
+* Tracking optimization
+* Performance optimization
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+Please read:
+
+[CONTRIBUTING.md](CONTRIBUTING.MD)
+
+before submitting a pull request.
+
+---
+
+## Coding Style
+
+This project follows the Python PEP 8 style guide.
+
+Recommended tool:
+
+Ruff
+
+---
+
+## Community
+
+Community channels:
+
+Discord: (coming soon)
+Slack: (coming soon)
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+
+See LICENSE for details.
+
+---
+
+## Acknowledgements
+
+This project is based on gesture recognition concepts using:
+
+* MediaPipe
+* OpenCV
+
+and was further structured, improved, and maintained as an open-source project.
+
+---
+
+## Author
+
+Sanjay Kumar
+
+GitHub:
+
+[https://github.com/insanjay](https://github.com/insanjay)
+
+---
