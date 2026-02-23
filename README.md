@@ -104,8 +104,6 @@ python main.py
 
 Show your hand to the webcam and perform gestures.
 
-Press `Q` to exit.
-
 ---
 
 ## Architecture Overview
@@ -171,7 +169,6 @@ config.py
 
 Examples:
 
-<!-- * cursor sensitivity -->
 * smoothing
 * scroll speed
 * gesture cooldown
@@ -222,7 +219,7 @@ Slack: (coming soon)
 
 This project is licensed under the MIT License.
 
-See LICENSE for details.
+See <strong><a href="LICENSE">LICENSE</a></strong> for details.
 
 ---
 

@@ -4,3 +4,5 @@
 /feedback.txt
 structure.txt
 /.ruff_cache/
+.gitignore
+hand_landmarker.task
